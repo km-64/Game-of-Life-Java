@@ -70,4 +70,4 @@ in highschool.
 
 ## Building and Running an Executable
 This project was made in the Eclipse IDE and used standard Java libraries so there should not be any problem with
-importing the files into an Eclipse project, building and running.
+importing the files into an Eclipse project, building and running. A release is attatched to this repository.
