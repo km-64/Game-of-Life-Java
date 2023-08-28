@@ -1,0 +1,53 @@
+@startuml Conway
+skinparam linetype ortho
+!theme plain
+
+class Main {
+    - windowHeight: int
+    - windowWidth: int
+
+    - gridHeight: int
+    - gridWidth: int
+    --
+    + {static} main(args: String[]): void
+}
+
+class GFX {
+    - width: int
+    - height: int
+    - gridRef: Grid
+    --
+    + GFX(width: int, height: int, grid: Grid)
+    + repaint(): void
+}
+
+class Grid {
+    - width: int
+    - height: int
+    - cells: Cell [][]
+    --
+    + Grid(width: int, height: int, initCellsPct: double)
+    + update(): void
+}
+
+class Cell {
+    - x: int
+    - y: int
+    - state: boolean
+    - nextState: boolean
+    - gridRef: Grid
+    --
+    + Cell(int: x, int: y, state: boolean, grid: Grid)
+    + applyRule(): void
+    + update(): void
+    - getActiveNeighbours(): int
+}
+
+Main -up- GFX
+Main -- Grid
+Grid *-down- Cell
+
+Grid <..right.. Cell
+Grid ..right..> Cell
+GFX ..down..> Grid
+@enduml
